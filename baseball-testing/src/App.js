@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+
+import "./App.css";
+import Dashboard from "./components/Dashboard.js";
+import Display from "./components/Display.js";
 
 function App() {
+  const [balls, setBalls] = useState(0);
+  const [strikes, setStrikes] = useState(0);
+
+  function addBalls() {
+    setBalls(balls => balls + 1);
+  }
+
+  function addStrikes() {
+    setStrikes(strikes => strikes + 1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Display
+        balls={balls}
+        strikes={strikes}
+        addBalls={addBalls}
+        addStrikes={addStrikes}
+      />
+      <Dashboard
+        balls={balls}
+        strikes={strikes}
+        addBalls={addBalls}
+        addStrikes={addStrikes}
+      />
     </div>
   );
 }
